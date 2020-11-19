@@ -5,8 +5,12 @@
         <title>Django Girls blog</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     </head>
     <body>
         <div class="page-header">
@@ -19,11 +23,13 @@
                     {% block content %}
                         {% for post in posts %}
                             <div class="post">
-                                <div class="date">
+                                <div class="w3-container">
+                                <h3><b><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></b></h3>
+                                <h5><span class="w3-opacity">
                                     {{ post.published_date }}
+                                    </span></h5>
                                 </div>
-                                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                                <p>{{ post.text|linebreaksbr }}</p>
+                                <div class="w3-container"><p>{{ post.text|linebreaksbr }}</p></div>
                             </div>
                         {% endfor %}
                     {% endblock %}
